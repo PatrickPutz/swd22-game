@@ -8,9 +8,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public abstract class Tile implements GameObject {
     protected Texture image;
     protected Sprite sprite;
+    protected int width;
+    protected int height;
 
-    public Tile() {
-
+    public Tile(int width, int height) {
+        this.width = width;
+        this.height = height;
     }
     @Override
     public void act(float delta) {
@@ -25,5 +28,13 @@ public abstract class Tile implements GameObject {
     @Override
     public void draw(SpriteBatch batch) {
         sprite.draw(batch);
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 }
