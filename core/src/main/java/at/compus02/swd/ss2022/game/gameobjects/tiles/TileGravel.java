@@ -5,8 +5,6 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class TileGravel extends Tile{
     public TileGravel() {
-        super(32,32);
-        image = new Texture("tile_gravel.png");
-        sprite = new Sprite(image);
+        super("tile_gravel.png",32,32);
     }
 }

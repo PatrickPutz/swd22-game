@@ -5,8 +5,6 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class TileGrass extends Tile{
     public TileGrass() {
-        super(32,32);
-        image = new Texture("tile_gras.png");
-        sprite = new Sprite(image);
+        super("tile_gras.png",32,32);
     }
 }
