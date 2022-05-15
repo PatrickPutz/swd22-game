@@ -1,9 +1,10 @@
 package at.compus02.swd.ss2022.game;
 
 import at.compus02.swd.ss2022.game.gameobjects.GameObject;
+import at.compus02.swd.ss2022.game.gameobjects.LivingBeingFactory;
 import at.compus02.swd.ss2022.game.gameobjects.ObstacleFactory;
-import at.compus02.swd.ss2022.game.gameobjects.Sign;
 import at.compus02.swd.ss2022.game.gameobjects.TileFactory;
+import at.compus02.swd.ss2022.game.gameobjects.livingbeings.LivingBeingType;
 import at.compus02.swd.ss2022.game.gameobjects.obstacles.ObstacleLog;
 import at.compus02.swd.ss2022.game.gameobjects.obstacles.ObstacleType;
 import at.compus02.swd.ss2022.game.gameobjects.tiles.Tile;
@@ -43,6 +44,7 @@ public class Main extends ApplicationAdapter {
 
 		TileFactory tileFactory = new TileFactory();
 		ObstacleFactory obstacleFactory = new ObstacleFactory();
+		LivingBeingFactory livingBeingFactory = new LivingBeingFactory();
 
 		ArrayList<Tile> startBackground = tileFactory.createTileBackgroundArea(TileType.GRASS, -240, 240, 16,16);
 		tileFactory.addTileAreaToGameObjects(gameObjects, startBackground);
@@ -63,6 +65,8 @@ public class Main extends ApplicationAdapter {
 		gameObjects.add(obstacleFactory.createObstacle(ObstacleType.BUSH, -168, -208));
 		gameObjects.add(obstacleFactory.createObstacle(ObstacleType.BUSH, -136, -208));
 		gameObjects.add(obstacleFactory.createObstacle(ObstacleType.BUSH, -136, -240));
+
+		gameObjects.add(livingBeingFactory.createLivingBeing(LivingBeingType.PLAYER, 0, 0));
 	}
 
 	private void act(float delta) {
