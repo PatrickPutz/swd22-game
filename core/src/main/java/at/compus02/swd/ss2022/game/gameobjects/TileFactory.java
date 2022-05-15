@@ -1,6 +1,7 @@
 package at.compus02.swd.ss2022.game.gameobjects;
 
 import at.compus02.swd.ss2022.game.gameobjects.tiles.*;
+import com.badlogic.gdx.utils.Array;
 
 import java.util.ArrayList;
 
@@ -43,6 +44,12 @@ public class TileFactory {
         }
 
         return tiles;
+    }
+
+    public void addTileAreaToGameObjects(Array<GameObject> gameObjects, ArrayList<Tile> tiles){
+        for (Tile tile : tiles) {
+            gameObjects.add(tile);
+        }
     }
 
 }

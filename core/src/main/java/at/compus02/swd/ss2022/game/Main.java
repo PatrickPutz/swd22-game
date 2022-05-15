@@ -39,18 +39,15 @@ public class Main extends ApplicationAdapter {
 		Gdx.input.setInputProcessor(this.gameInput);
 
 		TileFactory tileFactory = new TileFactory();
+
 		ArrayList<Tile> startBackground = tileFactory.createTileBackgroundArea(TileType.GRASS, -240, 240, 16,16);
-		for (Tile tile : startBackground) {
-			gameObjects.add(tile);
-		}
+		tileFactory.addTileAreaToGameObjects(gameObjects, startBackground);
+
 		ArrayList<Tile> surrounding = tileFactory.createTileBackgroundArea(TileType.GRAVEL, 70, 176, 4,4);
-		for (Tile tile : surrounding) {
-			gameObjects.add(tile);
-		}
+		tileFactory.addTileAreaToGameObjects(gameObjects, surrounding);
+
 		ArrayList<Tile> pond = tileFactory.createTileBackgroundArea(TileType.WATER, 102, 144, 2, 2);
-		for (Tile tile : pond) {
-			gameObjects.add(tile);
-		}
+		tileFactory.addTileAreaToGameObjects(gameObjects, pond);
 
 	}
 
