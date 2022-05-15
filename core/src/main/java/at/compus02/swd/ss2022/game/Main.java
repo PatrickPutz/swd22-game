@@ -2,17 +2,20 @@ package at.compus02.swd.ss2022.game;
 
 import at.compus02.swd.ss2022.game.gameobjects.GameObject;
 import at.compus02.swd.ss2022.game.gameobjects.Sign;
+import at.compus02.swd.ss2022.game.gameobjects.TileFactory;
+import at.compus02.swd.ss2022.game.gameobjects.tiles.Tile;
+import at.compus02.swd.ss2022.game.gameobjects.tiles.TileType;
 import at.compus02.swd.ss2022.game.input.GameInput;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
+
+import java.util.ArrayList;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends ApplicationAdapter {
@@ -31,10 +34,24 @@ public class Main extends ApplicationAdapter {
 	@Override
 	public void create() {
 		batch = new SpriteBatch();
-		gameObjects.add(new Sign());
 		font = new BitmapFont();
 		font.setColor(Color.WHITE);
 		Gdx.input.setInputProcessor(this.gameInput);
+
+		TileFactory tileFactory = new TileFactory();
+		ArrayList<Tile> startBackground = tileFactory.createTileBackgroundArea(TileType.GRASS, -240, 240, 16,16);
+		for (Tile tile : startBackground) {
+			gameObjects.add(tile);
+		}
+		ArrayList<Tile> surrounding = tileFactory.createTileBackgroundArea(TileType.GRAVEL, 70, 176, 4,4);
+		for (Tile tile : surrounding) {
+			gameObjects.add(tile);
+		}
+		ArrayList<Tile> pond = tileFactory.createTileBackgroundArea(TileType.WATER, 102, 144, 2, 2);
+		for (Tile tile : pond) {
+			gameObjects.add(tile);
+		}
+
 	}
 
 	private void act(float delta) {
