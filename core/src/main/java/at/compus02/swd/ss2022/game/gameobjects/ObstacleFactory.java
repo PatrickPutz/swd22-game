@@ -25,4 +25,6 @@ public class ObstacleFactory {
         return obstacle;
     }
 
+    // TODO: Methods for generating generic Obstacle patterns (Surrounding Map, Forest Parts, Cave Entrances, Dungeon Parts, Tunnels...)
+
 }
