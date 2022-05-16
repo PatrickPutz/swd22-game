@@ -1,9 +1,6 @@
 package at.compus02.swd.ss2022.game;
 
-import at.compus02.swd.ss2022.game.gameobjects.GameObject;
-import at.compus02.swd.ss2022.game.gameobjects.LivingBeingFactory;
-import at.compus02.swd.ss2022.game.gameobjects.ObstacleFactory;
-import at.compus02.swd.ss2022.game.gameobjects.TileFactory;
+import at.compus02.swd.ss2022.game.gameobjects.*;
 import at.compus02.swd.ss2022.game.gameobjects.livingbeings.LivingBeingType;
 import at.compus02.swd.ss2022.game.gameobjects.obstacles.ObstacleLog;
 import at.compus02.swd.ss2022.game.gameobjects.obstacles.ObstacleType;
@@ -42,29 +39,10 @@ public class Main extends ApplicationAdapter {
 		font.setColor(Color.WHITE);
 		Gdx.input.setInputProcessor(this.gameInput);
 
-		TileFactory tileFactory = new TileFactory();
-		ObstacleFactory obstacleFactory = new ObstacleFactory();
+		MapFactory mapFactory = new MapFactory();
 		LivingBeingFactory livingBeingFactory = new LivingBeingFactory();
 
-		ArrayList<Tile> startBackground = tileFactory.createTileBackgroundArea(TileType.GRASS, -240, 240, 16,16);
-		tileFactory.addTileAreaToGameObjects(gameObjects, startBackground);
-
-		ArrayList<Tile> surrounding = tileFactory.createTileBackgroundArea(TileType.GRAVEL, 70, 176, 4,4);
-		tileFactory.addTileAreaToGameObjects(gameObjects, surrounding);
-
-		ArrayList<Tile> pond = tileFactory.createTileBackgroundArea(TileType.WATER, 102, 144, 2, 2);
-		tileFactory.addTileAreaToGameObjects(gameObjects, pond);
-
-		gameObjects.add(obstacleFactory.createObstacle(ObstacleType.SIGN, 140, 80));
-		gameObjects.add(obstacleFactory.createObstacle(ObstacleType.LOG, 70, 176));
-		gameObjects.add(obstacleFactory.createObstacle(ObstacleType.STONE, 210, -240));
-		gameObjects.add(obstacleFactory.createObstacle(ObstacleType.STONE, 210, -208));
-		gameObjects.add(obstacleFactory.createObstacle(ObstacleType.STONE, 178, -240));
-		gameObjects.add(obstacleFactory.createObstacle(ObstacleType.BUSH, -232, -208));
-		gameObjects.add(obstacleFactory.createObstacle(ObstacleType.BUSH, -200, -208));
-		gameObjects.add(obstacleFactory.createObstacle(ObstacleType.BUSH, -168, -208));
-		gameObjects.add(obstacleFactory.createObstacle(ObstacleType.BUSH, -136, -208));
-		gameObjects.add(obstacleFactory.createObstacle(ObstacleType.BUSH, -136, -240));
+		mapFactory.createStartingPointMap(gameObjects);
 
 		gameObjects.add(livingBeingFactory.createLivingBeing(LivingBeingType.PLAYER, 0, 0));
 	}
