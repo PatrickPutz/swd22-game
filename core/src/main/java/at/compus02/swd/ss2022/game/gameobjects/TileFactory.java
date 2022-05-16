@@ -28,7 +28,7 @@ public class TileFactory {
         return tile;
     }
 
-    public ArrayList<Tile> createTileBackgroundArea(TileType tileType, int topLeftX, int topLeftY, int numberOfTilesHorizontal, int numberOfTilesVertical){
+    public ArrayList<Tile> createTileArea(TileType tileType, int topLeftX, int topLeftY, int numberOfTilesHorizontal, int numberOfTilesVertical){
         ArrayList<Tile> tiles = new ArrayList<>();
         int currentX = topLeftX;
         int currentY = topLeftY;

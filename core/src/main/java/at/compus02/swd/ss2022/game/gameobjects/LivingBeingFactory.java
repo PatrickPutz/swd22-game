@@ -3,7 +3,6 @@ package at.compus02.swd.ss2022.game.gameobjects;
 import at.compus02.swd.ss2022.game.gameobjects.livingbeings.LivingBeing;
 import at.compus02.swd.ss2022.game.gameobjects.livingbeings.LivingBeingType;
 import at.compus02.swd.ss2022.game.gameobjects.livingbeings.Player;
-import at.compus02.swd.ss2022.game.gameobjects.obstacles.*;
 
 public class LivingBeingFactory {
 

@@ -11,11 +11,11 @@ public class MapFactory {
 
     public void createStartingPointMap(Array<GameObject> gameObjects){
         tileFactory.addTileAreaToGameObjects(gameObjects,
-                tileFactory.createTileBackgroundArea(TileType.GRASS, -240, 240, 16,16));
+                tileFactory.createTileArea(TileType.GRASS, -240, 240, 16,16));
         tileFactory.addTileAreaToGameObjects(gameObjects,
-                tileFactory.createTileBackgroundArea(TileType.GRAVEL, 70, 176, 4,4));
+                tileFactory.createTileArea(TileType.GRAVEL, 70, 176, 4,4));
         tileFactory.addTileAreaToGameObjects(gameObjects,
-                tileFactory.createTileBackgroundArea(TileType.WATER, 102, 144, 2, 2));
+                tileFactory.createTileArea(TileType.WATER, 102, 144, 2, 2));
 
         gameObjects.add(obstacleFactory.createObstacle(ObstacleType.SIGN, 140, 80));
         gameObjects.add(obstacleFactory.createObstacle(ObstacleType.LOG, 70, 176));

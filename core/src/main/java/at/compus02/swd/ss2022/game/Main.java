@@ -2,10 +2,6 @@ package at.compus02.swd.ss2022.game;
 
 import at.compus02.swd.ss2022.game.gameobjects.*;
 import at.compus02.swd.ss2022.game.gameobjects.livingbeings.LivingBeingType;
-import at.compus02.swd.ss2022.game.gameobjects.obstacles.ObstacleLog;
-import at.compus02.swd.ss2022.game.gameobjects.obstacles.ObstacleType;
-import at.compus02.swd.ss2022.game.gameobjects.tiles.Tile;
-import at.compus02.swd.ss2022.game.gameobjects.tiles.TileType;
 import at.compus02.swd.ss2022.game.input.GameInput;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -15,8 +11,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
-
-import java.util.ArrayList;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends ApplicationAdapter {

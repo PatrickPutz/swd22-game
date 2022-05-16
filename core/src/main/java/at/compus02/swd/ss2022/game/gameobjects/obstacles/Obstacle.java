@@ -1,8 +1,6 @@
 package at.compus02.swd.ss2022.game.gameobjects.obstacles;
 
 import at.compus02.swd.ss2022.game.gameobjects.GameObject;
-import at.compus02.swd.ss2022.game.gameobjects.tiles.Tile;
-import at.compus02.swd.ss2022.game.gameobjects.tiles.TileType;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
