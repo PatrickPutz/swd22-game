@@ -8,6 +8,8 @@ This project was generated with a template including simple application launcher
 - Patrick Putz
 - Leo Tanner
 - Thomas Franz Altenburger
+- Karl Lienhart
+- Andreas Weinhofer
 
 ## Gradle
 
