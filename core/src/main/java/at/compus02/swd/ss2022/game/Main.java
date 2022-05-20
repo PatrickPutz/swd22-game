@@ -1,6 +1,7 @@
 package at.compus02.swd.ss2022.game;
 
 import at.compus02.swd.ss2022.game.gameobjects.*;
+import at.compus02.swd.ss2022.game.gameobjects.commands.*;
 import at.compus02.swd.ss2022.game.gameobjects.livingbeings.LivingBeingType;
 import at.compus02.swd.ss2022.game.input.GameInput;
 import com.badlogic.gdx.ApplicationAdapter;
@@ -12,14 +13,16 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
+import java.util.HashMap;
+
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends ApplicationAdapter {
 	private SpriteBatch batch;
 
 	private ExtendViewport viewport = new ExtendViewport(480.0f, 480.0f, 480.0f, 480.0f);
-	private GameInput gameInput = new GameInput();
 
 	private Array<GameObject> gameObjects = new Array<>();
+	private GameObject player;
 
 	private final float updatesPerSecond = 60;
 	private final float logicFrameTime = 1 / updatesPerSecond;
@@ -31,14 +34,27 @@ public class Main extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		font = new BitmapFont();
 		font.setColor(Color.WHITE);
-		Gdx.input.setInputProcessor(this.gameInput);
+
+		LivingBeingFactory livingBeingFactory = new LivingBeingFactory();
+		player = livingBeingFactory.createLivingBeing(LivingBeingType.PLAYER, 0, 0);
+
+		HashMap<MoveType, MoveCommand> commands = createCommands();
+		GameInput gameInput = new GameInput(commands);
+		Gdx.input.setInputProcessor(gameInput);
 
 		MapFactory mapFactory = new MapFactory();
-		LivingBeingFactory livingBeingFactory = new LivingBeingFactory();
 
 		mapFactory.createStartingPointMap(gameObjects);
+		gameObjects.add(player);
+	}
 
-		gameObjects.add(livingBeingFactory.createLivingBeing(LivingBeingType.PLAYER, 0, 0));
+	private HashMap<MoveType, MoveCommand> createCommands() {
+		HashMap<MoveType, MoveCommand> commands = new HashMap<>();
+		commands.put(MoveType.MOVEUP, new MoveUpCommand(player));
+		commands.put(MoveType.MOVEDOWN, new MoveDownCommand(player));
+		commands.put(MoveType.MOVELEFT, new MoveLeftCommand(player));
+		commands.put(MoveType.MOVERIGHT, new MoveRightCommand(player));
+		return commands;
 	}
 
 	private void act(float delta) {
