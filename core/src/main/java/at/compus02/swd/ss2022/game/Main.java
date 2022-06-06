@@ -2,6 +2,7 @@ package at.compus02.swd.ss2022.game;
 
 import at.compus02.swd.ss2022.game.gameobjects.*;
 import at.compus02.swd.ss2022.game.gameobjects.livingbeings.LivingBeingType;
+import at.compus02.swd.ss2022.game.gameobjects.livingbeings.Player;
 import at.compus02.swd.ss2022.game.input.GameInput;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -38,7 +39,8 @@ public class Main extends ApplicationAdapter {
 
 		mapFactory.createStartingPointMap(gameObjects);
 
-		gameObjects.add(livingBeingFactory.createLivingBeing(LivingBeingType.PLAYER, 0, 0));
+		Player player = (Player) livingBeingFactory.createLivingBeing(LivingBeingType.PLAYER, 0, 0);
+		gameObjects.add(player);
 	}
 
 	private void act(float delta) {
