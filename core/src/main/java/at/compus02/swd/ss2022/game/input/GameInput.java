@@ -4,7 +4,6 @@ import at.compus02.swd.ss2022.game.gameobjects.livingbeings.Player;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class GameInput extends InputAdapter {
     @Override
