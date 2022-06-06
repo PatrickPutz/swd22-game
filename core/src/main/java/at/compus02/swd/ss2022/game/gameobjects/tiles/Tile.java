@@ -11,8 +11,8 @@ public abstract class Tile implements GameObject {
     protected int width;
     protected int height;
 
-    public Tile(String imageName, int width, int height) {
-        this.image = new Texture(imageName);
+    public Tile(Texture texture, int width, int height) {
+        this.image = texture;
         this.sprite = new Sprite(image);
         this.width = width;
         this.height = height;

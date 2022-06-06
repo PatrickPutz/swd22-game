@@ -9,8 +9,8 @@ public abstract class Obstacle implements GameObject {
     private Texture image;
     private Sprite sprite;
 
-    public Obstacle(String imageName) {
-        image = new Texture(imageName);
+    public Obstacle(Texture texture) {
+        image = texture;
         sprite = new Sprite(image);
     }
     @Override

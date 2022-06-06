@@ -1,7 +1,9 @@
 package at.compus02.swd.ss2022.game.gameobjects.tiles;
 
+import at.compus02.swd.ss2022.game.gameobjects.AssetRepository;
+
 public class TileWall extends Tile{
     public TileWall() {
-        super("tile_wall.png",32,32);
+        super(AssetRepository.getTileWall(),32,32);
     }
 }

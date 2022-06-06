@@ -1,7 +1,9 @@
 package at.compus02.swd.ss2022.game.gameobjects.tiles;
 
+import at.compus02.swd.ss2022.game.gameobjects.AssetRepository;
+
 public class TileGravel extends Tile{
     public TileGravel() {
-        super("tile_gravel.png",32,32);
+        super(AssetRepository.getTileGravel(),32,32);
     }
 }

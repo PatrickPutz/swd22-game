@@ -11,8 +11,8 @@ public abstract class LivingBeing implements GameObject {
     private float positionX;
     private float positionY;
 
-    public LivingBeing(String imageName) {
-        image = new Texture(imageName);
+    public LivingBeing(Texture texture) {
+        image = texture;
         sprite = new Sprite(image);
     }
     @Override
