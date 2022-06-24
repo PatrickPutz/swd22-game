@@ -1,6 +1,7 @@
 package at.compus02.swd.ss2022.game;
 
 import at.compus02.swd.ss2022.game.gameobjects.*;
+import at.compus02.swd.ss2022.game.gameobjects.livingbeings.Enemy;
 import at.compus02.swd.ss2022.game.gameobjects.livingbeings.LivingBeingType;
 import at.compus02.swd.ss2022.game.gameobjects.livingbeings.Player;
 import at.compus02.swd.ss2022.game.input.GameInput;
@@ -41,6 +42,9 @@ public class Main extends ApplicationAdapter {
 
 		Player player = (Player) livingBeingFactory.createLivingBeing(LivingBeingType.PLAYER, 0, 0);
 		gameObjects.add(player);
+
+		Enemy enemy = (Enemy) livingBeingFactory.createLivingBeing(LivingBeingType.ENEMY, -200, -200);
+		gameObjects.add(enemy);
 	}
 
 	private void act(float delta) {
