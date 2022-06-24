@@ -1,5 +1,6 @@
 package at.compus02.swd.ss2022.game.input;
 
+import at.compus02.swd.ss2022.game.gameobjects.livingbeings.Enemy;
 import at.compus02.swd.ss2022.game.gameobjects.livingbeings.Player;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -27,6 +28,24 @@ public class GameInput extends InputAdapter {
 
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S)) {
             player.moveDown();
+        }
+    }
+
+    public void moveEnemy(Enemy enemy) {
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A)) {
+            enemy.moveRight();
+        }
+
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D)) {
+            enemy.moveLeft();
+        }
+
+        if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W)) {
+            enemy.moveDown();
+        }
+
+        if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S)) {
+            enemy.moveUp();
         }
     }
 }
