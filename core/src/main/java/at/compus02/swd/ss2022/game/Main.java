@@ -19,7 +19,7 @@ public class Main extends ApplicationAdapter {
 	private SpriteBatch batch;
 
 	private ExtendViewport viewport = new ExtendViewport(480.0f, 480.0f, 480.0f, 480.0f);
-	private GameInput gameInput = new GameInput();
+	private GameInput gameInput;
 
 	private Array<GameObject> gameObjects = new Array<>();
 
@@ -30,18 +30,18 @@ public class Main extends ApplicationAdapter {
 
 	@Override
 	public void create() {
+		AssetRepository assetRepository = new AssetRepository();
+		MapFactory mapFactory = new MapFactory();
+		LivingBeingFactory livingBeingFactory = new LivingBeingFactory();
+		Player player = (Player) livingBeingFactory.createLivingBeing(LivingBeingType.PLAYER, 0, 0);
+
+		gameInput = new GameInput(player.getMoveCommands());
 		batch = new SpriteBatch();
 		font = new BitmapFont();
 		font.setColor(Color.WHITE);
 		Gdx.input.setInputProcessor(this.gameInput);
 
-		AssetRepository assetRepository = new AssetRepository();
-		MapFactory mapFactory = new MapFactory();
-		LivingBeingFactory livingBeingFactory = new LivingBeingFactory();
-
 		mapFactory.createStartingPointMap(gameObjects);
-
-		Player player = (Player) livingBeingFactory.createLivingBeing(LivingBeingType.PLAYER, 0, 0);
 		gameObjects.add(player);
 
 		Enemy enemy = (Enemy) livingBeingFactory.createLivingBeing(LivingBeingType.ENEMY, -160, -160);
@@ -74,6 +74,7 @@ public class Main extends ApplicationAdapter {
 		while(deltaAccumulator > logicFrameTime) {
 			deltaAccumulator -= logicFrameTime;
 			act(logicFrameTime);
+			gameInput.executeCommands();
 		}
 		draw();
 	}

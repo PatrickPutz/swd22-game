@@ -10,11 +10,10 @@ public class Enemy extends LivingBeing {
 
     public Enemy() {
         super(AssetRepository.assets.get(AssetType.ENEMY), 1);
-        input = new GameInput();
     }
 
     @Override
     public void act(float delta) {
-        input.moveEnemy(this);
+
     }
 }
