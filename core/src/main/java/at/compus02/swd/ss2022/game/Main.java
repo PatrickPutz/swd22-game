@@ -35,6 +35,7 @@ public class Main extends ApplicationAdapter {
 		font.setColor(Color.WHITE);
 		Gdx.input.setInputProcessor(this.gameInput);
 
+		AssetRepository assetRepository = new AssetRepository();
 		MapFactory mapFactory = new MapFactory();
 		LivingBeingFactory livingBeingFactory = new LivingBeingFactory();
 
