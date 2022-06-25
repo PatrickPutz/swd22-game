@@ -8,7 +8,7 @@ public class Player extends LivingBeing{
     private GameInput input;
 
     public Player() {
-        super(AssetRepository.getLog());
+        super(AssetRepository.getPlayer(), 3);
         input = new GameInput();
     }
 

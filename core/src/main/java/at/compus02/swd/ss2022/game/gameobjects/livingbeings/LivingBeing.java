@@ -10,11 +10,14 @@ public abstract class LivingBeing implements GameObject {
     protected Sprite sprite;
     private float positionX;
     private float positionY;
+    private int health;
 
-    public LivingBeing(Texture texture) {
+    public LivingBeing(Texture texture, int health) {
         image = texture;
         sprite = new Sprite(image);
+        this.health = health;
     }
+
     @Override
     public void act(float delta) {
 

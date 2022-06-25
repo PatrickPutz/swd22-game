@@ -6,20 +6,10 @@ import at.compus02.swd.ss2022.game.input.GameInput;
 public class Enemy extends LivingBeing {
 
     private GameInput input;
-    private int health;
-
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
 
     public Enemy() {
-        super(AssetRepository.getStone());
+        super(AssetRepository.getEnemy(), 1);
         input = new GameInput();
-        health = 100;
     }
 
     @Override
