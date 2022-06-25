@@ -4,6 +4,7 @@ import at.compus02.swd.ss2022.game.gameobjects.*;
 import at.compus02.swd.ss2022.game.gameobjects.livingbeings.Enemy;
 import at.compus02.swd.ss2022.game.gameobjects.livingbeings.LivingBeingType;
 import at.compus02.swd.ss2022.game.gameobjects.livingbeings.Player;
+import at.compus02.swd.ss2022.game.gameobjects.observer.ConsoleGameObserver;
 import at.compus02.swd.ss2022.game.input.GameInput;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -34,6 +35,7 @@ public class Main extends ApplicationAdapter {
 		MapFactory mapFactory = new MapFactory();
 		LivingBeingFactory livingBeingFactory = new LivingBeingFactory();
 		Player player = (Player) livingBeingFactory.createLivingBeing(LivingBeingType.PLAYER, 0, 0);
+		ConsoleGameObserver consoleGameObserver = new ConsoleGameObserver(player);
 
 		gameInput = new GameInput(player.getMoveCommands());
 		batch = new SpriteBatch();
