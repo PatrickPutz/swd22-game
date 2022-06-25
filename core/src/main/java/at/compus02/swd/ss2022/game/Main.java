@@ -43,7 +43,7 @@ public class Main extends ApplicationAdapter {
 		Player player = (Player) livingBeingFactory.createLivingBeing(LivingBeingType.PLAYER, 0, 0);
 		gameObjects.add(player);
 
-		Enemy enemy = (Enemy) livingBeingFactory.createLivingBeing(LivingBeingType.ENEMY, -200, -200);
+		Enemy enemy = (Enemy) livingBeingFactory.createLivingBeing(LivingBeingType.ENEMY, -160, -160);
 		gameObjects.add(enemy);
 	}
 

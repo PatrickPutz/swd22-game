@@ -12,6 +12,8 @@ public final class AssetRepository {
     private static final Texture tileGravel = new Texture("tile_gravel.png");
     private static final Texture tileWall = new Texture("tile_wall.png");
     private static final Texture tileWater = new Texture("tile_water.png");
+    private static final Texture player = new Texture("player.png");
+    private static final Texture enemy = new Texture("enemy.png");
 
     public static Texture getBush() {
         return bush;
@@ -19,6 +21,14 @@ public final class AssetRepository {
 
     public static Texture getLog() {
         return log;
+    }
+
+    public static Texture getEnemy() {
+        return enemy;
+    }
+
+    public static Texture getPlayer() {
+        return player;
     }
 
     public static Texture getSign() {
