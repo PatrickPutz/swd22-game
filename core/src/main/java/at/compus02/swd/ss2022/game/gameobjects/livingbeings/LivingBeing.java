@@ -98,6 +98,8 @@ public abstract class LivingBeing implements GameObject {
         return health;
     }
 
+
+
     public void setHealth(int health) {
         this.health = health;
     }
