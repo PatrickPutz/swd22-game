@@ -20,6 +20,7 @@ public class LivingBeingFactory {
     public LivingBeing createLivingBeing(LivingBeingType livingBeingType, int positionX, int positionY){
         LivingBeing livingBeing = getLivingBeingType(livingBeingType);
         livingBeing.setPosition(positionX, positionY);
+        livingBeing.setSpawnPosition(positionX, positionY);
         return livingBeing;
     }
 

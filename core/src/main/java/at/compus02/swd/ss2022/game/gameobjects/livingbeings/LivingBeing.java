@@ -11,11 +11,19 @@ public abstract class LivingBeing implements GameObject {
     private float positionX;
     private float positionY;
     private int health;
+    private float spawnPositionX;
+    private float spawnPositionY;
+    private int baseHealth;
+
+    public int getBaseHealth() {
+        return baseHealth;
+    }
 
     public LivingBeing(Texture texture, int health) {
         image = texture;
         sprite = new Sprite(image);
         this.health = health;
+        this.baseHealth = health;
     }
 
     @Override
@@ -28,6 +36,19 @@ public abstract class LivingBeing implements GameObject {
         sprite.setPosition(x, y);
         this.positionX = x;
         this.positionY = y;
+    }
+
+    public void setSpawnPosition(float x, float y){
+        this.spawnPositionX = x;
+        this.spawnPositionY = y;
+    }
+
+    public float getSpawnPositionX() {
+        return spawnPositionX;
+    }
+
+    public float getSpawnPositionY() {
+        return spawnPositionY;
     }
 
     @Override
@@ -57,5 +78,25 @@ public abstract class LivingBeing implements GameObject {
 
     public void moveDown(){
         setPosition(getPositionX(), getPositionY() - 2);
+    }
+
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public void attack(LivingBeing target, int damage){
+        target.setHealth(target.getHealth() - damage);
+        if(target.health <= 0)
+            respawn(target);
+    }
+
+    public void respawn(LivingBeing livingBeing){
+        livingBeing.setHealth(livingBeing.getBaseHealth());
+        livingBeing.setPosition(getSpawnPositionX(), getSpawnPositionY());
     }
 }
