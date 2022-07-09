@@ -1,7 +1,8 @@
 package at.compus02.swd.ss2022.game;
 
 import at.compus02.swd.ss2022.game.gameobjects.*;
-import at.compus02.swd.ss2022.game.gameobjects.livingbeings.Enemy;
+import at.compus02.swd.ss2022.game.gameobjects.livingbeings.EnemyGuard;
+import at.compus02.swd.ss2022.game.gameobjects.livingbeings.EnemySoldier;
 import at.compus02.swd.ss2022.game.gameobjects.livingbeings.LivingBeingType;
 import at.compus02.swd.ss2022.game.gameobjects.livingbeings.Player;
 import at.compus02.swd.ss2022.game.gameobjects.observer.ConsoleGameObserver;
@@ -46,8 +47,11 @@ public class Main extends ApplicationAdapter {
 		mapFactory.createStartingPointMap(gameObjects);
 		gameObjects.add(player);
 
-		Enemy enemy = (Enemy) livingBeingFactory.createLivingBeing(LivingBeingType.ENEMY, -160, -160);
-		gameObjects.add(enemy);
+		EnemyGuard enemyGuard = (EnemyGuard) livingBeingFactory.createLivingBeing(LivingBeingType.ENEMY_GUARD, -160, -160);
+		gameObjects.add(enemyGuard);
+
+		EnemySoldier enemySoldier = (EnemySoldier) livingBeingFactory.createLivingBeing(LivingBeingType.ENEMY_SOLDIER, 160, 160);
+		gameObjects.add(enemySoldier);
 	}
 
 	private void act(float delta) {

@@ -2,8 +2,7 @@ package at.compus02.swd.ss2022.game.input;
 
 import at.compus02.swd.ss2022.game.gameobjects.commands.Command;
 import at.compus02.swd.ss2022.game.gameobjects.commands.MoveType;
-import at.compus02.swd.ss2022.game.gameobjects.livingbeings.Enemy;
-import at.compus02.swd.ss2022.game.gameobjects.livingbeings.Player;
+import at.compus02.swd.ss2022.game.gameobjects.livingbeings.EnemyGuard;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
@@ -42,7 +41,7 @@ public class GameInput extends InputAdapter {
         }
     }
 
-    public void moveEnemy(Enemy enemy) {
+    public void moveEnemy(EnemyGuard enemy) {
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A)) {
             enemy.moveRight();
         }

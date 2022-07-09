@@ -4,11 +4,9 @@ import at.compus02.swd.ss2022.game.gameobjects.AssetRepository;
 import at.compus02.swd.ss2022.game.gameobjects.AssetType;
 import at.compus02.swd.ss2022.game.input.GameInput;
 
-public class Enemy extends LivingBeing {
+public class EnemySoldier extends LivingBeing {
 
-    private GameInput input;
-
-    public Enemy() {
+    public EnemySoldier() {
         super(AssetRepository.assets.get(AssetType.ENEMY), 1);
     }
 

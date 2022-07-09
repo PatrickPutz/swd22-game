@@ -1,9 +1,6 @@
 package at.compus02.swd.ss2022.game.gameobjects;
 
-import at.compus02.swd.ss2022.game.gameobjects.livingbeings.Enemy;
-import at.compus02.swd.ss2022.game.gameobjects.livingbeings.LivingBeing;
-import at.compus02.swd.ss2022.game.gameobjects.livingbeings.LivingBeingType;
-import at.compus02.swd.ss2022.game.gameobjects.livingbeings.Player;
+import at.compus02.swd.ss2022.game.gameobjects.livingbeings.*;
 
 public class LivingBeingFactory {
 
@@ -11,8 +8,10 @@ public class LivingBeingFactory {
         switch (livingBeingType) {
             case PLAYER:
                 return new Player();
-            case ENEMY:
-                return new Enemy();
+            case ENEMY_GUARD:
+                return new EnemyGuard();
+            case ENEMY_SOLDIER:
+                return new EnemySoldier();
             default:
                 return null;
         }
