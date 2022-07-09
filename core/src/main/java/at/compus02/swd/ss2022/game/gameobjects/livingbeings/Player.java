@@ -15,9 +15,11 @@ public class Player extends LivingBeing{
 
     private HashMap<MoveType, Command> moveCommands;
     private List<GameObserver> observers = new ArrayList<GameObserver>();
+    private int attackRange;
 
     public Player() {
         super(AssetRepository.assets.get(AssetType.PLAYER), 3);
+        this.attackRange = 20;
         this.moveCommands = new HashMap<>();
         moveCommands.put(MoveType.MOVEUP, new MoveUpCommand(this));
         moveCommands.put(MoveType.MOVEDOWN, new MoveDownCommand(this));
@@ -67,4 +69,77 @@ public class Player extends LivingBeing{
         super.moveDown();
         notifyAllObservers(ObservableType.PLAYERMOVEDDOWN);
     }
+
+    public void attackEnemyInRange(ArrayList<LivingBeing> enemies){
+        for (LivingBeing enemy : enemies) {
+            if(this.inAttackRange(enemy) && inAttackDirection(enemy)){
+                this.attack(enemy, 1);
+            }
+        }
+    }
+
+    private boolean inAttackDirection(LivingBeing livingBeing){
+        if(this.getDirection() == getEnemyDirection(livingBeing))
+            return true;
+        return false;
+    }
+
+    private Direction getEnemyDirection(LivingBeing livingBeing){
+        float xDistance;
+        float yDistance;
+        Direction directionX;
+        Direction directionY;
+
+        if(this.getPositionX() < livingBeing.getPositionX()) {
+            xDistance = livingBeing.getPositionX() - this.getPositionX();
+            directionX = Direction.RIGHT;
+        }
+        else {
+            xDistance = this.getPositionX() - livingBeing.getPositionX();
+            directionX = Direction.LEFT;
+        }
+
+        if(this.getPositionY() < livingBeing.getPositionY()) {
+            yDistance = livingBeing.getPositionY() - this.getPositionY();
+            directionY = Direction.UP;
+        }
+        else {
+            yDistance = this.getPositionY() - livingBeing.getPositionY();
+            directionY = Direction.DOWN;
+        }
+
+        if(xDistance < yDistance)
+            return directionX;
+        else
+            return directionY;
+    }
+
+    private boolean inAttackRange(LivingBeing livingBeing){
+        if(inXRange(livingBeing) && inYRange(livingBeing))
+            return true;
+        return false;
+    }
+
+    private boolean inXRange (LivingBeing livingBeing){
+        if((this.getPositionX() < livingBeing.getPositionX()) &&
+                (livingBeing.getPositionX() - this.getPositionX()) <= attackRange)
+            return true;
+        else if((this.getPositionX() > livingBeing.getPositionX()) &&
+                (this.getPositionX() - livingBeing.getPositionX()) <= attackRange)
+            return true;
+        else
+            return false;
+    }
+
+    private boolean inYRange(LivingBeing livingBeing){
+        if((this.getPositionY() < livingBeing.getPositionY()) &&
+                (livingBeing.getPositionY() - this.getPositionY()) <= attackRange)
+            return true;
+        else if((this.getPositionY() > livingBeing.getPositionY()) &&
+                (this.getPositionY() - livingBeing.getPositionY()) <= attackRange)
+            return true;
+        else
+            return false;
+    }
+
 }

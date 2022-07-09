@@ -2,11 +2,13 @@ package at.compus02.swd.ss2022.game.input;
 
 import at.compus02.swd.ss2022.game.gameobjects.commands.Command;
 import at.compus02.swd.ss2022.game.gameobjects.commands.MoveType;
-import at.compus02.swd.ss2022.game.gameobjects.livingbeings.EnemyGuard;
+import at.compus02.swd.ss2022.game.gameobjects.livingbeings.LivingBeing;
+import at.compus02.swd.ss2022.game.gameobjects.livingbeings.Player;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GameInput extends InputAdapter {
@@ -41,21 +43,8 @@ public class GameInput extends InputAdapter {
         }
     }
 
-    public void moveEnemy(EnemyGuard enemy) {
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.A)) {
-            enemy.moveRight();
-        }
-
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) || Gdx.input.isKeyPressed(Input.Keys.D)) {
-            enemy.moveLeft();
-        }
-
-        if (Gdx.input.isKeyPressed(Input.Keys.UP) || Gdx.input.isKeyPressed(Input.Keys.W)) {
-            enemy.moveDown();
-        }
-
-        if (Gdx.input.isKeyPressed(Input.Keys.DOWN) || Gdx.input.isKeyPressed(Input.Keys.S)) {
-            enemy.moveUp();
-        }
+    public void attackOnSpaceDown(Player player, ArrayList<LivingBeing> enemies){
+        if (Gdx.input.isKeyPressed(Input.Keys.SPACE))
+            player.attackEnemyInRange(enemies);
     }
 }

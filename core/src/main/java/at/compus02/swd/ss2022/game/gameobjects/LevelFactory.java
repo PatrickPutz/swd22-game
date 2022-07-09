@@ -16,6 +16,7 @@ public class LevelFactory {
     private LivingBeingFactory livingBeingFactory = new LivingBeingFactory();
 
     private Player player;
+    private ArrayList<LivingBeing> enemies;
     private RunToPlayerMovementStrategy runToPlayer;
     private RunFromPlayerMovementStrategy runFromPlayer;
 
@@ -26,23 +27,31 @@ public class LevelFactory {
         movementStrategies = new HashMap<>();
         runToPlayer = new RunToPlayerMovementStrategy(player);
         runFromPlayer = new RunFromPlayerMovementStrategy(player);
+        this.enemies = new ArrayList<>();
     }
 
     public void createLevelOne(Array<GameObject> gameObjects){
         mapFactory.createStartingPointMap(gameObjects);
 
-        EnemyGuard enemyGuard = (EnemyGuard) livingBeingFactory.createLivingBeing(LivingBeingType.ENEMY_GUARD, -160, -160);
+        EnemyGuard enemyGuard = (EnemyGuard) livingBeingFactory.createLivingBeing(LivingBeingType.ENEMY_GUARD, 160, 160);
         gameObjects.add(enemyGuard);
-        EnemySoldier enemySoldier = (EnemySoldier) livingBeingFactory.createLivingBeing(LivingBeingType.ENEMY_SOLDIER, 160, 160);
+        EnemySoldier enemySoldier = (EnemySoldier) livingBeingFactory.createLivingBeing(LivingBeingType.ENEMY_SOLDIER, -160, -160);
         gameObjects.add(enemySoldier);
 
         movementStrategies.put(enemyGuard, runToPlayer);
         movementStrategies.put(enemySoldier, runFromPlayer);
+
+        enemies.add(enemyGuard);
+        enemies.add(enemySoldier);
     }
 
     public void startMovementStrategies(){
         for (LivingBeing livingBeing : movementStrategies.keySet()) {
             movementStrategies.get(livingBeing).startMovementStrategy(livingBeing);
         }
+    }
+
+    public ArrayList<LivingBeing> getEnemies() {
+        return enemies;
     }
 }

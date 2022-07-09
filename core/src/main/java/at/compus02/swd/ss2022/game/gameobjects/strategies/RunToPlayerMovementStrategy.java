@@ -28,7 +28,7 @@ public class RunToPlayerMovementStrategy implements MovementStrategy{
     private void moveLeftToPlayer(LivingBeing livingBeing){
         if(player.getPositionX() < livingBeing.getPositionX()){
             if((livingBeing.getPositionX() - player.getPositionX()) <= triggerRange){
-                while(livingBeing.getPositionX() > (player.getPositionX() + 12)
+                while(livingBeing.getPositionX() > (player.getPositionX() + 25)
                     && inXRange(livingBeing)
                     && inYRange(livingBeing)){
                     livingBeing.moveLeft();
@@ -39,7 +39,7 @@ public class RunToPlayerMovementStrategy implements MovementStrategy{
     private void moveRightToPlayer(LivingBeing livingBeing){
         if(player.getPositionX() > livingBeing.getPositionX()){
             if((player.getPositionX() - livingBeing.getPositionX()) <= triggerRange){
-                while(livingBeing.getPositionX() < (player.getPositionX() - 12)
+                while(livingBeing.getPositionX() < (player.getPositionX() - 25)
                         && inXRange(livingBeing)
                         && inYRange(livingBeing)){
                     livingBeing.moveRight();
@@ -50,7 +50,7 @@ public class RunToPlayerMovementStrategy implements MovementStrategy{
     private void moveUpToPlayer(LivingBeing livingBeing){
         if(player.getPositionY() > livingBeing.getPositionY()){
             if((player.getPositionY() - livingBeing.getPositionY()) <= triggerRange){
-                while(livingBeing.getPositionY() < (player.getPositionY() - 12)
+                while(livingBeing.getPositionY() < (player.getPositionY() - 25)
                         && inXRange(livingBeing)
                         && inYRange(livingBeing)){
                     livingBeing.moveUp();
@@ -61,7 +61,7 @@ public class RunToPlayerMovementStrategy implements MovementStrategy{
     private void moveDownToPlayer(LivingBeing livingBeing){
         if(player.getPositionY() < livingBeing.getPositionY()){
             if((livingBeing.getPositionY() - player.getPositionY()) <= triggerRange){
-                while(livingBeing.getPositionY() > (player.getPositionY() + 12)
+                while(livingBeing.getPositionY() > (player.getPositionY() + 25)
                         && inXRange(livingBeing)
                         && inYRange(livingBeing)){
                     livingBeing.moveDown();
