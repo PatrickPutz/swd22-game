@@ -22,6 +22,7 @@ public class Main extends ApplicationAdapter {
 
 	private ExtendViewport viewport = new ExtendViewport(480.0f, 480.0f, 480.0f, 480.0f);
 	private GameInput gameInput;
+	private LevelFactory levelFactory;
 
 	private Array<GameObject> gameObjects = new Array<>();
 
@@ -34,11 +35,11 @@ public class Main extends ApplicationAdapter {
 	public void create() {
 		AssetRepository assetRepository = new AssetRepository();
 
-		LevelFactory levelFactory = new LevelFactory();
-		levelFactory.createLevelOne(gameObjects);
-
 		LivingBeingFactory livingBeingFactory = new LivingBeingFactory();
 		Player player = (Player) livingBeingFactory.createLivingBeing(LivingBeingType.PLAYER, 0, 0);
+
+		levelFactory = new LevelFactory(player);
+		levelFactory.createLevelOne(gameObjects);
 		gameObjects.add(player);
 
 		ConsoleGameObserver consoleGameObserver = new ConsoleGameObserver(player);
@@ -79,6 +80,7 @@ public class Main extends ApplicationAdapter {
 			deltaAccumulator -= logicFrameTime;
 			act(logicFrameTime);
 			gameInput.executeCommands();
+			levelFactory.startMovementStrategies();
 		}
 		draw();
 	}
