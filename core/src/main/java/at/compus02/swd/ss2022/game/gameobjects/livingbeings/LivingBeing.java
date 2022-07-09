@@ -14,6 +14,7 @@ public abstract class LivingBeing implements GameObject {
     private float spawnPositionX;
     private float spawnPositionY;
     private int baseHealth;
+    private Direction direction;
 
     public int getBaseHealth() {
         return baseHealth;
@@ -24,6 +25,7 @@ public abstract class LivingBeing implements GameObject {
         sprite = new Sprite(image);
         this.health = health;
         this.baseHealth = health;
+        this.direction = Direction.DOWN;
     }
 
     @Override
@@ -66,20 +68,31 @@ public abstract class LivingBeing implements GameObject {
 
     public void moveLeft(){
         setPosition(getPositionX() - 2, getPositionY());
+        setDirection(Direction.LEFT);
     }
 
     public void moveRight(){
         setPosition(getPositionX() + 2, getPositionY());
+        setDirection(Direction.RIGHT);
     }
 
     public void moveUp(){
         setPosition(getPositionX(), getPositionY() + 2);
+        setDirection(Direction.UP);
     }
 
     public void moveDown(){
         setPosition(getPositionX(), getPositionY() - 2);
+        setDirection(Direction.DOWN);
     }
 
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
 
     public int getHealth() {
         return health;
