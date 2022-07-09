@@ -72,7 +72,7 @@ public class Player extends LivingBeing{
 
     public void attackEnemyInRange(ArrayList<LivingBeing> enemies){
         for (LivingBeing enemy : enemies) {
-            if(this.inAttackRange(enemy) && inAttackDirection(enemy)){
+            if(this.inAttackRange(enemy)){
                 this.attack(enemy, 1);
             }
         }
