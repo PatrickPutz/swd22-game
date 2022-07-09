@@ -33,9 +33,14 @@ public class Main extends ApplicationAdapter {
 	@Override
 	public void create() {
 		AssetRepository assetRepository = new AssetRepository();
-		MapFactory mapFactory = new MapFactory();
+
+		LevelFactory levelFactory = new LevelFactory();
+		levelFactory.createLevelOne(gameObjects);
+
 		LivingBeingFactory livingBeingFactory = new LivingBeingFactory();
 		Player player = (Player) livingBeingFactory.createLivingBeing(LivingBeingType.PLAYER, 0, 0);
+		gameObjects.add(player);
+
 		ConsoleGameObserver consoleGameObserver = new ConsoleGameObserver(player);
 
 		gameInput = new GameInput(player.getMoveCommands());
@@ -44,14 +49,7 @@ public class Main extends ApplicationAdapter {
 		font.setColor(Color.WHITE);
 		Gdx.input.setInputProcessor(this.gameInput);
 
-		mapFactory.createStartingPointMap(gameObjects);
-		gameObjects.add(player);
 
-		EnemyGuard enemyGuard = (EnemyGuard) livingBeingFactory.createLivingBeing(LivingBeingType.ENEMY_GUARD, -160, -160);
-		gameObjects.add(enemyGuard);
-
-		EnemySoldier enemySoldier = (EnemySoldier) livingBeingFactory.createLivingBeing(LivingBeingType.ENEMY_SOLDIER, 160, 160);
-		gameObjects.add(enemySoldier);
 	}
 
 	private void act(float delta) {
