@@ -2,6 +2,7 @@ package at.compus02.swd.ss2022.game.gameobjects;
 
 import at.compus02.swd.ss2022.game.gameobjects.livingbeings.*;
 import at.compus02.swd.ss2022.game.gameobjects.strategies.MovementStrategy;
+import at.compus02.swd.ss2022.game.gameobjects.strategies.RunFromPlayerMovementStrategy;
 import at.compus02.swd.ss2022.game.gameobjects.strategies.RunToPlayerMovementStrategy;
 import com.badlogic.gdx.utils.Array;
 
@@ -16,6 +17,7 @@ public class LevelFactory {
 
     private Player player;
     private RunToPlayerMovementStrategy runToPlayer;
+    private RunFromPlayerMovementStrategy runFromPlayer;
 
     private HashMap<LivingBeing, MovementStrategy> movementStrategies;
 
@@ -23,6 +25,7 @@ public class LevelFactory {
         this.player = player;
         movementStrategies = new HashMap<>();
         runToPlayer = new RunToPlayerMovementStrategy(player);
+        runFromPlayer = new RunFromPlayerMovementStrategy(player);
     }
 
     public void createLevelOne(Array<GameObject> gameObjects){
@@ -34,6 +37,7 @@ public class LevelFactory {
         gameObjects.add(enemySoldier);
 
         movementStrategies.put(enemyGuard, runToPlayer);
+        movementStrategies.put(enemySoldier, runFromPlayer);
     }
 
     public void startMovementStrategies(){
