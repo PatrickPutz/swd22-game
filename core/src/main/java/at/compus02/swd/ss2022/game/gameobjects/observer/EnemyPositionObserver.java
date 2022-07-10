@@ -9,12 +9,12 @@ public class EnemyPositionObserver implements PositionObserver{
     private EnemySoldier enemySoldier;
 
     public EnemyPositionObserver(String enemyType, LivingBeing livingBeing) {
-        if (enemyType == "GUARD") {
+        if (enemyType.equals("GUARD")) {
             this.enemyGuard = (EnemyGuard) livingBeing;
             this.enemyGuard.attach(this);
-        } else if (enemyType == "SOLDIER") {
+        } else if (enemyType.equals("SOLDIER")) {
             this.enemySoldier = (EnemySoldier) livingBeing;
-            //this.enemySoldier.attach(this);
+            this.enemySoldier.attach(this);
         }
     }
 
@@ -22,10 +22,10 @@ public class EnemyPositionObserver implements PositionObserver{
     public void update(String enemyType) {
         switch (enemyType){
             case "GUARD":
-                System.out.println("Guard moved down - X: " + enemyGuard.getPositionX() + ", Y: " + enemyGuard.getPositionY());
+                System.out.println("Guard moved - X: " + enemyGuard.getPositionX() + ", Y: " + enemyGuard.getPositionY());
                 break;
             case "SOLDIER":
-                System.out.println("Soldier moved up - X: " + enemySoldier.getPositionX() + ", Y: " + enemySoldier.getPositionY());
+                System.out.println("Soldier moved - X: " + enemySoldier.getPositionX() + ", Y: " + enemySoldier.getPositionY());
                 break;
         }
     }

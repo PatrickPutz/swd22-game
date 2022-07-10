@@ -1,6 +1,7 @@
 package at.compus02.swd.ss2022.game.gameobjects;
 
 import at.compus02.swd.ss2022.game.gameobjects.livingbeings.*;
+import at.compus02.swd.ss2022.game.gameobjects.observer.EnemyPositionObserver;
 import at.compus02.swd.ss2022.game.gameobjects.strategies.MovementStrategy;
 import at.compus02.swd.ss2022.game.gameobjects.strategies.RunFromPlayerMovementStrategy;
 import at.compus02.swd.ss2022.game.gameobjects.strategies.RunToPlayerMovementStrategy;
@@ -19,6 +20,8 @@ public class LevelFactory {
     private ArrayList<LivingBeing> enemies;
     private RunToPlayerMovementStrategy runToPlayer;
     private RunFromPlayerMovementStrategy runFromPlayer;
+    private EnemyPositionObserver guardPositionObserver;
+    private EnemyPositionObserver soldierPositionObserver;
 
     private HashMap<LivingBeing, MovementStrategy> movementStrategies;
 
@@ -43,6 +46,9 @@ public class LevelFactory {
 
         enemies.add(enemyGuard);
         enemies.add(enemySoldier);
+
+        guardPositionObserver = new EnemyPositionObserver("GUARD", enemyGuard);
+        soldierPositionObserver = new EnemyPositionObserver("SOLDIER", enemySoldier);
     }
 
     public void startMovementStrategies(){

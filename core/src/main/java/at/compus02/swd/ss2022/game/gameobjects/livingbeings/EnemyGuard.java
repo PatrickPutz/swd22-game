@@ -26,33 +26,33 @@ public class EnemyGuard extends LivingBeing {
         observers.add(observer);
     }
 
-    private void notifyAllObservers(String enemyType){
+    private void notifyAllObservers(){
         for (PositionObserver positionObserver : observers) {
-            positionObserver.update(enemyType);
+            positionObserver.update("GUARD");
         }
     }
 
     @Override
     public void moveLeft() {
         super.moveLeft();
-        notifyAllObservers("GUARD");
+        notifyAllObservers();
     }
 
     @Override
     public void moveRight() {
         super.moveRight();
-        notifyAllObservers("GUARD");
+        notifyAllObservers();
     }
 
     @Override
     public void moveUp() {
         super.moveUp();
-        notifyAllObservers("GUARD");
+        notifyAllObservers();
     }
 
     @Override
     public void moveDown() {
         super.moveDown();
-        notifyAllObservers("GUARD");
+        notifyAllObservers();
     }
 }
